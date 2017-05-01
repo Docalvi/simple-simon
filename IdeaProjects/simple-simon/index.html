@@ -3,8 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script src="js/jquery.js"></script>
+    <link rel="stylesheet" href="css/simon.css">
 </head>
 <body>
+<!--layout for simon says game-->
+
+<button id="start">start</button>
+<div class="sequenceBox" id="box1"></div>
+<div class="sequenceBox" id="box2"></div>
+<div class="sequenceBox" id="box3"></div>
+<div class="sequenceBox" id="box4"></div>
+
+
+<script>
+
+    $(document).ready(function () {
+        'use strict';
+        //variable used throughout project
+        var begin = $('#start');
+        var pad1 = $('#box1');
+        var pad2 = $('#box2');
+        var pad3 = $('#box3');
+        var pad4 = $('#box4');
+        var padSelect = $('.sequenceBox');
+        var sequence = [];
+        var playerInput = [];
+
+
+
+        padSelect.click(function () {
+            $(this).fadeOut(100).fadeIn(100)
+        });
+
+
+
+            var num = Math.floor(Math.random() * 4) + 1;
+            sequence.push(num);
+
+            if (num == 1) {
+                pad1.fadeOut(100).fadeIn(100)
+            } else if (num == 2) {
+                pad2.fadeOut(100).fadeIn(100)
+            } else if (num == 3) {
+                pad3.fadeOut(100).fadeIn(100)
+            } else if (num == 4) {
+                pad4.fadeOut(100).fadeIn(100)
+            }
+
+
+
+
+
+
+
+
+
+
+
+    });
+
+
+</script>
 
 </body>
 </html>

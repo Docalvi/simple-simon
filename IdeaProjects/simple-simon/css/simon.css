@@ -1,0 +1,27 @@
+/*body, html{*/
+/*height: 100%;*/
+/*width: 100%;*/
+/*}*/
+
+.sequenceBox {
+    height: 200px;
+    width: 200px;
+    border: solid black;
+
+}
+
+#box1 {
+background-color: red;
+}
+
+#box2 {
+background-color: yellow;
+}
+
+#box3 {
+   background-color: darkgreen;
+}
+
+#box4 {
+background-color: blue;
+}

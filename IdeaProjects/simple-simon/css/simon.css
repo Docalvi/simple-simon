@@ -4,14 +4,15 @@
 /*}*/
 
 .sequenceBox {
-    height: 200px;
-    width: 200px;
+    height: 50px;
+    width: 50px;
     border: solid black;
 
 }
 
 #box1 {
 background-color: red;
+
 }
 
 #box2 {

@@ -10,10 +10,10 @@
 <!--layout for simon says game-->
 
 <button id="start">start</button>
-<div class="sequenceBox" id="box1"></div>
-<div class="sequenceBox" id="box2"></div>
-<div class="sequenceBox" id="box3"></div>
-<div class="sequenceBox" id="box4"></div>
+<div class="sequenceBox" id="box1" data-value="1"></div>
+<div class="sequenceBox" id="box2" data-value="2"></div>
+<div class="sequenceBox" id="box3" data-value="3"></div>
+<div class="sequenceBox" id="box4" data-value="4"></div>
 
 
 <script>
@@ -26,39 +26,110 @@
         var pad2 = $('#box2');
         var pad3 = $('#box3');
         var pad4 = $('#box4');
-        var padSelect = $('.sequenceBox');
+        var $padSelect = $('.sequenceBox');
         var sequence = [];
         var playerInput = [];
+        var round = 0;
+        var i = 0;
+
+        //Functions used
+        function startOver() {
+            sequence = [];
+            playerInput = [];
+            restartRound();
+        }
+
+        function newGame() {
+            displayPattern();
+            displayRan();
+
+            newround();
+            console.log(round);
+        }
+
+        function restartRound() {
+            round = 0
+        }
+
+        function newround() {
+            round += 1
+        }
 
 
+        function displayRan() {
+            var num = Math.floor(Math.random() * 4) + 1;
+            sequence.push(num);
+        }
 
-        padSelect.click(function () {
-            $(this).fadeOut(100).fadeIn(100)
+        function displayPattern() {
+            var i = 0;
+            var intervalid = setInterval(function () {
+
+
+                switch (sequence[i]) {
+                    case 1:
+                        pad1.fadeOut(100).fadeIn(100);
+                        break;
+                    case 2:
+                        pad2.fadeOut(100).fadeIn(100);
+                        break;
+                    case 3:
+                        pad3.fadeOut(100).fadeIn(100);
+                        break;
+                    case 4:
+                        pad4.fadeOut(100).fadeIn(100);
+                        break
+
+                }
+
+                if (i == sequence.length - 1) {
+                    clearInterval(intervalid)
+                } else {
+                    i++
+                }
+
+
+            }, 500);
+        }
+
+        begin.click(function () {
+            sequence = [];
+            playerInput = [];
+            newGame()
+
         });
 
 
+        $padSelect.click(function () {
+            $(this).fadeOut(100).fadeIn(100);
 
-            var num = Math.floor(Math.random() * 4) + 1;
-            sequence.push(num);
+            var inputValue = $(this).attr("data-value");
 
-            if (num == 1) {
-                pad1.fadeOut(100).fadeIn(100)
-            } else if (num == 2) {
-                pad2.fadeOut(100).fadeIn(100)
-            } else if (num == 3) {
-                pad3.fadeOut(100).fadeIn(100)
-            } else if (num == 4) {
-                pad4.fadeOut(100).fadeIn(100)
+            console.log(inputValue);
+            console.log('this is i' + i);
+            console.log(sequence);
+            console.log(playerInput);
+
+            playerInput.push(inputValue);
+
+            if (inputValue == sequence[i]) {
+                i++;
+                if (playerInput.length === sequence.length) {
+                    i = 0;
+                    playerInput = [];
+                    newGame()
+                }
+            }else {
+                i = 0;
+                playerInput = [];
+                restartRound();
+                startOver();
+                console.log('Wrong')
+
             }
 
 
-
-
-
-
-
-
-
+        });
 
 
     });

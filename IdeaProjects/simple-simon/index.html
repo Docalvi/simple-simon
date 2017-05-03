@@ -7,7 +7,7 @@
     <script src="js/jquery.js"></script>
     <link rel="stylesheet" href="css/simon.css">
 </head>
-<body background="img/rustic.jpg">
+<body id="background">
 <!--layout for simon says game-->
 
 <button id="start">start</button>
@@ -133,7 +133,7 @@
                 playerInput = [];
                 restartRound();
                 startOver();
-                $gameInfo.html('Sorry Try Again!');
+                $gameInfo.html('End Of Line!');
                 console.log('Wrong')
             }
         });

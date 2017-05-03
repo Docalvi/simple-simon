@@ -3,14 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Title</title>
+    <title>Simon Wars</title>
     <script src="js/jquery.js"></script>
     <link rel="stylesheet" href="css/simon.css">
 </head>
 <body id="background">
 <!--layout for simon says game-->
 
-<button id="start">start</button>
 <div id="container">
     <div class="sequenceBox" id="box1" data-value="1"></div>
     <div class="sequenceBox" id="box2" data-value="2"></div>
@@ -19,6 +18,7 @@
 </div>
 <div id="gameInfo"></div>
 <div id="ready"></div>
+<button id="start">start</button>
 
 <script>
 
@@ -34,13 +34,12 @@
         var pad4 = $('#box4');
         var $padSelect = $('.sequenceBox');
         var $gameInfo = $('#gameInfo');
+        var $container = $('#container');
+        var $start = $('#start');
         var sequence = [];
         var playerInput = [];
         var round = 0;
         var i = 0;
-
-
-
 
 
         //Functions used throughout through the games functionality
@@ -48,6 +47,7 @@
         function nextRound() {
             round += 1
         }
+
         function restartRound() {
             round = 0
         }
@@ -56,7 +56,7 @@
             displayPattern();
             displayRan();
             nextRound();
-            $gameInfo.html('Current round: '+ round);
+            $gameInfo.html('Current round: ' + round);
         }
 
         function startOver() {
@@ -64,8 +64,6 @@
             playerInput = [];
             restartRound();
         }
-
-
 
 
         function displayRan() {
@@ -110,8 +108,9 @@
             sequence = [];
             playerInput = [];
             restartRound();
-            newRound()
-
+            newRound();
+            $container.css('display','block');
+            $start.css('display','none')
         });
 
 
@@ -133,8 +132,9 @@
                 playerInput = [];
                 restartRound();
                 startOver();
-                $gameInfo.html('End Of Line!');
-                console.log('Wrong')
+                $gameInfo.html('End Of Line!'+'<br>'+'Continue?');
+                $container.css('display','none');
+                $start.css('display','inline')
             }
         });
 

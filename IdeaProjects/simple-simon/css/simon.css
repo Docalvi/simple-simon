@@ -17,15 +17,16 @@ html, body {
     background-color: #3F8D97;
     font-size: 45px;
     border-radius: 12px;
-    width: 40%;
-    box-shadow: 0 5px #666;
+    width: 30%;
+    box-shadow: 0 5px #77D1C2;
     transform: translateY(4px);
     margin-bottom: 20px;
     cursor: pointer;
-    margin-top: 5%;
+    margin-top: 25%;
     font-family: TR2N;
     color: #55D8E0;
     text-align: center;
+    animation: blinker 2s linear infinite;
 }
 
 #container {
@@ -39,6 +40,8 @@ html, body {
     background-image: url("../img/tron-background.jpg");
     background-repeat: no-repeat;
     background-size: cover;
+    display: none;
+    margin-top: 5%;
 
 }
 
@@ -48,7 +51,7 @@ html, body {
     margin: auto;
     cursor: pointer;
     border-radius: 10px;
-    box-shadow: 5px 5px 10px 10px #8fa2a4;
+    box-shadow: 5px 5px 10px 10px #27829c;
 
 }
 
@@ -74,7 +77,6 @@ html, body {
 
 #box4 {
     background-color: #E6FFFF;
-
     float: left;
 }
 
@@ -82,5 +84,9 @@ html, body {
     font-size: 100px;
     font-family: TR2N;
     color: #55d8e0;
+    animation: blinker 2s linear infinite;
+}
+@keyframes blinker {
+    50% { opacity: 0; }
 }
 

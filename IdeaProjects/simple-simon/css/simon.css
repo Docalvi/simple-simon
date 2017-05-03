@@ -1,28 +1,78 @@
-/*body, html{*/
-/*height: 100%;*/
-/*width: 100%;*/
-/*}*/
+* {
+    text-align: center;
+
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+#start {
+    background-color: darkgoldenrod;
+    font-size: 45px;
+    border-radius: 12px;
+    width: 40%;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+#container {
+    height: 60%;
+    width: 35%;
+    margin: auto;
+    background-color: #ffd141;
+    position: relative;
+
+}
 
 .sequenceBox {
-    height: 50px;
-    width: 50px;
-    border: solid black;
+    height: 25%;
+    width: 25%;
+    margin: auto;
+    cursor: pointer;
 
 }
 
 #box1 {
-background-color: red;
-
+    background-color: #ff4a3b;
+    float: left;
+    margin-left: 25%;
+    margin-top: 20%;
 }
 
 #box2 {
-background-color: yellow;
+    background-color: #ffed53;
+    float: left;
+    margin-top: 20%;
 }
 
 #box3 {
-   background-color: darkgreen;
+    background-color: #5b9a52;
+    clear: left;
+    float: left;
+    margin-left: 25%;
 }
 
 #box4 {
-background-color: blue;
+    background-color: #2d34a9;
+
+    float: left;
+}
+
+#gameInfo{
+    font-size: 100px;
+    font-family: TR2N;
+    text-decoration-color: #0074ff;
+}
+#ready {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    font-family: TR2N
+    text-decoration-color: #0074ff;
+    
+
 }

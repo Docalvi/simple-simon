@@ -2,58 +2,70 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Title</title>
     <script src="js/jquery.js"></script>
     <link rel="stylesheet" href="css/simon.css">
 </head>
-<body>
+<body background="img/rustic.jpg">
 <!--layout for simon says game-->
 
 <button id="start">start</button>
-<div class="sequenceBox" id="box1" data-value="1"></div>
-<div class="sequenceBox" id="box2" data-value="2"></div>
-<div class="sequenceBox" id="box3" data-value="3"></div>
-<div class="sequenceBox" id="box4" data-value="4"></div>
-
+<div id="container">
+    <div class="sequenceBox" id="box1" data-value="1"></div>
+    <div class="sequenceBox" id="box2" data-value="2"></div>
+    <div class="sequenceBox" id="box3" data-value="3"></div>
+    <div class="sequenceBox" id="box4" data-value="4"></div>
+</div>
+<div id="gameInfo"></div>
+<div id="ready"></div>
 
 <script>
 
     $(document).ready(function () {
         'use strict';
+
         //variable used throughout project
+
         var begin = $('#start');
         var pad1 = $('#box1');
         var pad2 = $('#box2');
         var pad3 = $('#box3');
         var pad4 = $('#box4');
         var $padSelect = $('.sequenceBox');
+        var $gameInfo = $('#gameInfo');
         var sequence = [];
         var playerInput = [];
         var round = 0;
         var i = 0;
 
-        //Functions used
+
+
+
+
+        //Functions used throughout through the games functionality
+
+        function nextRound() {
+            round += 1
+        }
+        function restartRound() {
+            round = 0
+        }
+
+        function newRound() {
+            displayPattern();
+            displayRan();
+            nextRound();
+            $gameInfo.html('Current round: '+ round);
+        }
+
         function startOver() {
             sequence = [];
             playerInput = [];
             restartRound();
         }
 
-        function newGame() {
-            displayPattern();
-            displayRan();
 
-            newround();
-            console.log(round);
-        }
-
-        function restartRound() {
-            round = 0
-        }
-
-        function newround() {
-            round += 1
-        }
 
 
         function displayRan() {
@@ -68,16 +80,16 @@
 
                 switch (sequence[i]) {
                     case 1:
-                        pad1.fadeOut(100).fadeIn(100);
+                        pad1.fadeOut(200).fadeIn(200);
                         break;
                     case 2:
-                        pad2.fadeOut(100).fadeIn(100);
+                        pad2.fadeOut(200).fadeIn(200);
                         break;
                     case 3:
-                        pad3.fadeOut(100).fadeIn(100);
+                        pad3.fadeOut(200).fadeIn(200);
                         break;
                     case 4:
-                        pad4.fadeOut(100).fadeIn(100);
+                        pad4.fadeOut(200).fadeIn(200);
                         break
 
                 }
@@ -89,13 +101,16 @@
                 }
 
 
-            }, 500);
+            }, 700);
         }
+
+        //Click events that allow the user to operate game
 
         begin.click(function () {
             sequence = [];
             playerInput = [];
-            newGame()
+            restartRound();
+            newRound()
 
         });
 
@@ -104,12 +119,6 @@
             $(this).fadeOut(100).fadeIn(100);
 
             var inputValue = $(this).attr("data-value");
-
-            console.log(inputValue);
-            console.log('this is i' + i);
-            console.log(sequence);
-            console.log(playerInput);
-
             playerInput.push(inputValue);
 
             if (inputValue == sequence[i]) {
@@ -117,20 +126,17 @@
                 if (playerInput.length === sequence.length) {
                     i = 0;
                     playerInput = [];
-                    newGame()
+                    newRound()
                 }
-            }else {
+            } else {
                 i = 0;
                 playerInput = [];
                 restartRound();
                 startOver();
+                $gameInfo.html('Sorry Try Again!');
                 console.log('Wrong')
-
             }
-
-
         });
-
 
     });
 

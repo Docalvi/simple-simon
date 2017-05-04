@@ -9,7 +9,7 @@
 </head>
 <body id="background">
 <!--layout for simon says game-->
-
+<!--<audio src="audio/SonofFlynn .m4a" id="Son"></audio>-->
 <div id="container">
     <div class="sequenceBox" id="box1" data-value="1"></div>
     <div class="sequenceBox" id="box2" data-value="2"></div>
@@ -40,6 +40,8 @@
         var playerInput = [];
         var round = 0;
         var i = 0;
+        var music = new Audio("audio/SonofFlynn .m4a");
+        music.play();
 
 
         //Functions used throughout through the games functionality
@@ -110,7 +112,10 @@
             restartRound();
             newRound();
             $container.css('display','block');
-            $start.css('display','none')
+            $start.css('display','none');
+            var battleBegin = new Audio ('audio/battle.mp3');
+            battleBegin.play();
+            music.pause();
         });
 
 
@@ -132,9 +137,11 @@
                 playerInput = [];
                 restartRound();
                 startOver();
-                $gameInfo.html('End Of Line!'+'<br>'+'Continue?');
+                $gameInfo.html('End Of Line :'+'<br>'+'Continue . . .').css('margin-top', '10%');
                 $container.css('display','none');
-                $start.css('display','inline')
+                $start.css({'display':'inline', 'margin-top': '8%'});
+                var endOfLine = new Audio ('audio/endofline.mp3');
+                endOfLine.play()
             }
         });
 

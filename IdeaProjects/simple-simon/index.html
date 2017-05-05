@@ -67,12 +67,13 @@
             restartRound();
         }
 
-
+        // Generates a random number for the games sequence array
         function displayRan() {
             var num = Math.floor(Math.random() * 4) + 1;
             sequence.push(num);
         }
 
+        //This animates the pads
         function displayPattern() {
             var i = 0;
             var intervalid = setInterval(function () {
@@ -106,26 +107,28 @@
 
         //Click events that allow the user to operate game
 
+
+        //This operates the start button
         begin.click(function () {
             sequence = [];
             playerInput = [];
 
-            setTimeout(function(){
-            restartRound();
-            newRound();
+            setTimeout(function () {
+                restartRound();
+                newRound();
             }, 5000);
 
             $container.fadeIn(4000);
-            $start.css('display','none');
-            var battleBegin = new Audio ('audio/battle.mp3');
+            $start.css('display', 'none');
+            var battleBegin = new Audio('audio/battle.mp3');
             battleBegin.play();
             music.pause();
         });
 
-
+        //This operates the pads when clicked
         $padSelect.click(function () {
             $(this).fadeOut(100).fadeIn(100);
-            var hit = new Audio ('audio/hit-01.wav');
+            var hit = new Audio('audio/hit-01.wav');
             hit.play();
 
             var inputValue = $(this).attr("data-value");
@@ -139,14 +142,15 @@
                     newRound()
                 }
             } else {
+                //This operates what happens when the player losses
                 i = 0;
                 playerInput = [];
                 restartRound();
                 startOver();
-                $gameInfo.html('End Of Line :'+'<br>'+'Continue . . .').css('margin-top', '10%');
-                $container.css('display','none');
-                $start.css({'display':'inline', 'margin-top': '8%'});
-                var endOfLine = new Audio ('audio/endofline.mp3');
+                $gameInfo.html('End Of Line :' + '<br>' + 'Continue . . .').css('margin-top', '10%');
+                $container.css('display', 'none');
+                $start.css({'display': 'inline', 'margin-top': '8%'});
+                var endOfLine = new Audio('audio/endofline.mp3');
                 endOfLine.play()
             }
         });

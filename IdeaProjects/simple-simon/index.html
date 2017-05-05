@@ -109,9 +109,13 @@
         begin.click(function () {
             sequence = [];
             playerInput = [];
+
+            setTimeout(function(){
             restartRound();
             newRound();
-            $container.css('display','block');
+            }, 5000);
+
+            $container.fadeIn(4000);
             $start.css('display','none');
             var battleBegin = new Audio ('audio/battle.mp3');
             battleBegin.play();
@@ -121,6 +125,8 @@
 
         $padSelect.click(function () {
             $(this).fadeOut(100).fadeIn(100);
+            var hit = new Audio ('audio/hit-01.wav');
+            hit.play();
 
             var inputValue = $(this).attr("data-value");
             playerInput.push(inputValue);

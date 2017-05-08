@@ -55,6 +55,7 @@
         }
 
         function newRound() {
+
             displayPattern();
             displayRan();
             nextRound();
@@ -75,6 +76,7 @@
 
         //This animates the pads
         function displayPattern() {
+
             var i = 0;
             var intervalid = setInterval(function () {
 
@@ -97,12 +99,14 @@
 
                 if (i == sequence.length - 1) {
                     clearInterval(intervalid)
+
                 } else {
+
                     i++
                 }
 
 
-            }, 700);
+            }, 800);
         }
 
         //Click events that allow the user to operate game
